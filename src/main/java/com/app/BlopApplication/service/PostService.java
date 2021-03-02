@@ -108,4 +108,8 @@ public class PostService {
 
         //----------------------------------------------------------------------------------------------------------
     }
+
+    public void deletePost(Integer postId){
+        postRepository.deletePost(postId);
+    }
 }

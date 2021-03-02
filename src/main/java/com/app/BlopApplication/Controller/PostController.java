@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,6 +41,12 @@ public class PostController {
         //PostService postService=new PostService();
         newPost.setDate(new Date());
         postService.createPost(newPost);
+        return "redirect:/posts";
+    }
+
+    @RequestMapping(method=RequestMethod.DELETE,value = "/deletePost")
+    public String deletePost(@RequestParam(name="postId") Integer postId){
+        postService.deletePost(postId);
         return "redirect:/posts";
     }
 }
